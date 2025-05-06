@@ -203,7 +203,7 @@
         (:quit () t)
         (:idle () )
         (:keydown (:keysym keysym)
-          (initial-keycode (sdl2:scancode keysym)))
+          (handle-keydown (sdl2:scancode keysym)))
         (:mousebuttondown ()
           (setf switchp :edit)
           (return-from exit)))))
@@ -235,7 +235,7 @@
 (setf (aref *map* 20 22) 1)
 (setf (aref *map* 21 22) 1)
 
-(format t "space: pause/continue~%right/return: step when pause~%")
+(format t "space: pause/continue~%right/return: step when pause~%mouse click to edit when pause~%")
 
 #+sbcl (sdl2:make-this-thread-main (lambda () (main-loop)))
 #-sbcl (main-loop)
